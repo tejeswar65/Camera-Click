@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
   public errors: WebcamInitError[] = [];
   public webcamImage: WebcamImage = null;
   private trigger: Subject<void> = new Subject<void>();
+  dataUrl;
 
   ngOnInit(): void {
 
@@ -31,6 +32,7 @@ export class MainComponent implements OnInit {
   }
   public handleImage(webcamImage: WebcamImage): void {
     console.info('received webcam image', webcamImage);
+    this.dataUrl = webcamImage.imageAsDataUrl
     this.webcamImage = webcamImage;
   }
   public get triggerObservable(): Observable<void> {
