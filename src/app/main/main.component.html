@@ -1,0 +1,35 @@
+<div style=" padding-top: 40px;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class='col-md-6'>
+        <div class= 'webcam'>
+        <webcam [height]="700" [width]="700" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="DispWebcam"
+            [allowCameraSwitch]="CameraSwitch"
+            [videoOptions]="videoOptions"
+            [imageQuality]="1"
+            (initError)="handleInitError($event)"
+        ></webcam>
+      </div>
+
+      </div>
+      <div class='col-md-5 offset-md-1'>
+        <h4>Clicked Image:</h4>
+        <div class="snapshot" *ngIf="webcamImage">
+          <img [src]="webcamImage.imageAsDataUrl"/>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+  <div class="row">
+    <div class='col-md-6'>
+      <div style="text-align: center;">
+        <button type="button" class="btn" style=" color: black; box-shadow: 0px 2px 6px rgb(187, 187, 187);" (click)="triggerSnapshot();">Capture</button>
+        <button type="button" class="btn" style=" color: white; background-color: rgb(66, 66, 66); box-shadow: 0px 2px 6px rgb(187, 187, 187); margin: 20px;" (click)="toggleWebcam();">Toggle Webcam</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+</div>
